@@ -31,8 +31,8 @@ const envSchema = z
     JWT_ACCESS_EXPIRES_IN: z.string().default("15m"),
 
     JWT_REFRESH_EXPIRES_IN: z.string().default("7d"),
-    API_SETU_CLIENT_ID: z.string().min(1, "API_SETU_CLIENT_ID is REQUIRED"),
-    VERIFY_GST_API_KEY: z.string().min(1, "VERIFY_GST_API_KEY is REQUIRED"),
+
+
     AMAZON_AWS_ACCESS_KEY: z.string().min(1).optional(),
     AWS_ACCESS_KEY_SECRET: z.string().min(1).optional(),
     AWS_REGION: z.string().min(1, "AWS_REGION is required"),
@@ -40,10 +40,7 @@ const envSchema = z
     AWS_CLOUDFRONT_DISTRIBUTION_ID: z.string().min(1).optional(),
     CDN_BASE_URL: z.string().url().default("https://cdn.kokki.in"),
     UPLOAD_MAX_FILE_SIZE_MB: z.coerce.number().int().min(1).max(50).default(15),
-    TWO_FACTOR_API_KEY: z.string().min(1, "TWO_FACTOR_API_KEY is required"),
-    SEND_OTP_TEMPLATE: z.string().min(1, "SEND_OTP_TEMPLATE is required"),
-    TEST_CREDENTIALS: z.string().min(1, "SEND_OTP_TEMPLATE is required"),
-    STATIC_OTP: z.string().min(4, "STATIC_OTP is required"),
+
     EMAIL_FROM: z.email("EMAIL FROM REQUIRED"),
     LOGO_URL: z.string().min(10, "LOGO_URL is required"),
   })
@@ -106,11 +103,6 @@ module.exports = {
     refreshExpiresIn: env.JWT_REFRESH_EXPIRES_IN,
   },
 
-  apiSetu: {
-    clientId: env.API_SETU_CLIENT_ID,
-    gst_api_key: env.VERIFY_GST_API_KEY,
-  },
-
   aws: {
     accessKeyId: env.AMAZON_AWS_ACCESS_KEY,
     secretAccessKey: env.AWS_ACCESS_KEY_SECRET,
@@ -123,12 +115,7 @@ module.exports = {
     maxFileSizeBytes: env.UPLOAD_MAX_FILE_SIZE_MB * 1024 * 1024,
   },
 
-  otp: {
-    apiKey: env.TWO_FACTOR_API_KEY,
-    sendOtpTemplate: env.SEND_OTP_TEMPLATE,
-    testCredentials: env.TEST_CREDENTIALS,
-    staticOtp: env.STATIC_OTP
-  },
+
 
   emailFrom: env.EMAIL_FROM,
   assets: {
