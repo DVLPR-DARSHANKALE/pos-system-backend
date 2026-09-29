@@ -17,6 +17,7 @@
     "migrate:make": "knex migrate:make",
     "seed": "knex seed:run",
     "seed:uat": "knex seed:run --env uat",
+    "seed:dev": "knex seed:run --env development",
     "seed:prod": "knex seed:run --env production",
     "seed:make": "knex seed:make",
     "seed:only": "knex seed:run --specific"
